@@ -37,7 +37,7 @@ export function MigrationSection() {
           <span className="text-2xl shrink-0">💬</span>
           <div>
             <p className="font-semibold text-sm">Works from Mindbody and Wodify too.</p>
-            <p className="text-white/50 text-sm mt-1">Same process, different CSVs. We&apos;ve mapped the column formats. <a href="#waitlist" className="text-[#e63329] hover:underline">Talk to us</a> if you&apos;re on something else.</p>
+            <p className="text-white/50 text-sm mt-1">Same process, different CSVs. We&apos;ve mapped the column formats. <a href="#waitlist" className="text-[#ff6b63] underline underline-offset-4 hover:text-[#ff8a84]">Talk to us</a> if you&apos;re on something else.</p>
           </div>
         </div>
       </div>

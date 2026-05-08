@@ -9,7 +9,7 @@ export function Footer() {
           Built by operators, for operators. Not VC-funded. Not PushPress.
         </p>
         <div className="flex items-center gap-4 text-xs text-white/40">
-          <a href="mailto:hello@gymvision.com" className="hover:text-white transition-colors">hello@gymvision.com</a>
+          <a href="mailto:hello@gymvision.co" className="hover:text-white transition-colors">hello@gymvision.co</a>
         </div>
       </div>
     </footer>

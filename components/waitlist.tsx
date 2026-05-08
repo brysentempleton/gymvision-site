@@ -63,6 +63,7 @@ export function WaitlistSection() {
               className="w-full h-12 rounded-xl border border-white/10 bg-white/[0.05] px-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-[#e63329]/60"
             />
             <select
+              aria-label="Member count"
               value={size}
               onChange={(e) => setSize(e.target.value)}
               className="w-full h-12 rounded-xl border border-white/10 bg-[#0a0a0a] px-4 text-sm text-white focus:outline-none focus:border-[#e63329]/60"
