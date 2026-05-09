@@ -7,7 +7,6 @@ export function NavBar() {
         </span>
         <nav className="hidden md:flex items-center gap-8 text-sm text-white/60">
           <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#case-study" className="hover:text-white transition-colors">Case Study</a>
           <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
           <a href="#migrate" className="hover:text-white transition-colors">Migration</a>
         </nav>

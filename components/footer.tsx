@@ -6,7 +6,7 @@ export function Footer() {
           Gym<span className="text-[#e63329]">Vision</span>
         </span>
         <p className="text-xs text-white/30 text-center">
-          Built by operators, for operators. Not VC-funded. Not PushPress.
+          Built by operators, for operators. Not VC-funded.
         </p>
         <div className="flex items-center gap-4 text-xs text-white/40">
           <a href="mailto:hello@gymvision.co" className="hover:text-white transition-colors">hello@gymvision.co</a>

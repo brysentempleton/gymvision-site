@@ -3,17 +3,17 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "GymVision — The gym OS that thinks ahead",
-  description: "AI-native gym management. Stripe at-cost. 1-click migration from PushPress. Built for gyms that refuse to settle.",
+  description: "AI-native gym management. Stripe at-cost. One-afternoon migration from any platform. Built for gyms that refuse to settle.",
   openGraph: {
     title: "GymVision — The gym OS that thinks ahead",
-    description: "Replace PushPress, Mindbody, or Wodify in one afternoon. Keep Stripe at-cost. Let AI handle the follow-ups.",
+    description: "Replace your gym OS in one afternoon. Keep Stripe at-cost. Let AI handle the follow-ups.",
     siteName: "GymVision",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "GymVision — The gym OS that thinks ahead",
-    description: "AI-native gym management. Stripe at-cost. 1-click PushPress migration.",
+    description: "AI-native gym management. Stripe at-cost. One-afternoon migration.",
   },
 };
 

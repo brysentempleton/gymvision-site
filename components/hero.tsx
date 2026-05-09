@@ -9,7 +9,7 @@ export function HeroSection() {
       <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-white/60 mb-8">
           <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-          Live at Gas House Gym, Spokane WA
+          In private beta
         </div>
 
         <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-6">
@@ -18,7 +18,7 @@ export function HeroSection() {
         </h1>
 
         <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
-          Replace PushPress, Mindbody, or Wodify in one afternoon.
+          Replace your gym OS in one afternoon.
           Keep Stripe at-cost. Let AI handle the follow-ups.
           Built by operators, for operators.
         </p>
@@ -31,10 +31,10 @@ export function HeroSection() {
             Join the waitlist
           </a>
           <a
-            href="#case-study"
+            href="#features"
             className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-white/10 text-white/80 font-semibold text-base hover:border-white/30 hover:text-white transition-colors"
           >
-            See the case study →
+            See what's different →
           </a>
         </div>
 
@@ -43,7 +43,7 @@ export function HeroSection() {
           {[
             { stat: "$0", label: "Stripe markup" },
             { stat: "99.99%", label: "Uptime SLA" },
-            { stat: "1-click", label: "PushPress migration" },
+            { stat: "1-click", label: "Migration" },
           ].map(({ stat, label }) => (
             <div key={label} className="text-center">
               <div className="text-2xl font-black text-white">{stat}</div>

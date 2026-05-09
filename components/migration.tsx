@@ -1,8 +1,8 @@
 const STEPS = [
-  { n: "1", title: "Export from PushPress", body: "Hit Export in PushPress. You get a CSV dump of members, payments, and history. Takes 30 seconds." },
+  { n: "1", title: "Export from your platform", body: "Hit Export in your current admin. You get a CSV dump of members, payments, and history. Takes 30 seconds on most platforms." },
   { n: "2", title: "Import into GymVision", body: "Drop the CSV. GymVision maps columns, deduplicates, and confirms the count before importing anything." },
   { n: "3", title: "Members self-migrate", body: "Every member gets an email: \"Tap here to set up your new account.\" No staff calls. No confusion." },
-  { n: "4", title: "Flip the DNS", body: "Update your domain. GymVision provisions SSL. Done. PushPress never knows you left." },
+  { n: "4", title: "Flip the DNS", body: "Update your domain. GymVision provisions SSL. Done. Your old vendor never knows you left." },
 ];
 
 export function MigrationSection() {
@@ -36,8 +36,8 @@ export function MigrationSection() {
         <div className="mt-10 rounded-2xl border border-white/10 bg-white/[0.03] p-6 flex items-start gap-4">
           <span className="text-2xl shrink-0">💬</span>
           <div>
-            <p className="font-semibold text-sm">Works from Mindbody and Wodify too.</p>
-            <p className="text-white/50 text-sm mt-1">Same process, different CSVs. We&apos;ve mapped the column formats. <a href="#waitlist" className="text-[#ff6b63] underline underline-offset-4 hover:text-[#ff8a84]">Talk to us</a> if you&apos;re on something else.</p>
+            <p className="font-semibold text-sm">Works from any major platform.</p>
+            <p className="text-white/50 text-sm mt-1">Same process, different CSV. We&apos;ve mapped most column formats. <a href="#waitlist" className="text-[#ff6b63] underline underline-offset-4 hover:text-[#ff8a84]">Talk to us</a> about your stack.</p>
           </div>
         </div>
       </div>

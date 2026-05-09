@@ -7,7 +7,7 @@ const FEATURES = [
   {
     icon: "💳",
     title: "Stripe at-cost",
-    body: "We take zero markup on payments. You pay Stripe's 2.9% + 30¢ and nothing more. At $20k/mo volume that's $4,800/year back in your pocket vs. PushPress.",
+    body: "We take zero markup on payments. You pay Stripe's 2.9% + 30¢ and nothing more. At $20k/mo volume that's $4,800/year back in your pocket vs. typical platform fees.",
   },
   {
     icon: "📤",
@@ -38,7 +38,7 @@ export function WedgeSection() {
         <div className="text-center mb-16">
           <p className="text-[#e63329] font-mono text-xs uppercase tracking-[0.2em] mb-3">Why GymVision</p>
           <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-            Not another PushPress clone.
+            Not another off-the-shelf gym OS.
           </h2>
           <p className="mt-4 text-white/50 text-lg max-w-xl mx-auto">
             Four genuine wedges that competitors haven&apos;t touched — and won&apos;t touch, because it would break their revenue model.

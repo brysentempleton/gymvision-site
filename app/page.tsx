@@ -1,7 +1,6 @@
 import { HeroSection } from "@/components/hero";
 import { WedgeSection } from "@/components/wedge";
 import { PricingSection } from "@/components/pricing";
-import { CaseStudySection } from "@/components/case-study";
 import { MigrationSection } from "@/components/migration";
 import { WaitlistSection } from "@/components/waitlist";
 import { NavBar } from "@/components/nav";
@@ -14,7 +13,6 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <WedgeSection />
-        <CaseStudySection />
         <PricingSection />
         <MigrationSection />
         <WaitlistSection />
