@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <section className="relative overflow-hidden pt-32 pb-16">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px]" />
       {/* Radial gradient overlay */}
@@ -23,7 +25,7 @@ export function HeroSection() {
           Built by operators, for operators.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a
             href="#waitlist"
             className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#e63329] text-white font-semibold text-base hover:bg-[#c9291f] transition-colors shadow-lg shadow-red-900/30"
@@ -34,12 +36,12 @@ export function HeroSection() {
             href="#features"
             className="inline-flex items-center justify-center h-12 px-8 rounded-full border border-white/10 text-white/80 font-semibold text-base hover:border-white/30 hover:text-white transition-colors"
           >
-            See what's different →
+            See what&apos;s different →
           </a>
         </div>
 
         {/* Stats row */}
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-xl mx-auto">
+        <div className="grid grid-cols-3 gap-8 max-w-xl mx-auto mb-16">
           {[
             { stat: "$0", label: "Stripe markup" },
             { stat: "99.99%", label: "Uptime SLA" },
@@ -51,6 +53,33 @@ export function HeroSection() {
             </div>
           ))}
         </div>
+      </div>
+
+      {/* Product preview — the proof-shot moment */}
+      <div className="relative z-10 mx-auto max-w-6xl px-6">
+        <div className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-2 shadow-2xl shadow-red-900/10">
+          {/* Faux browser chrome */}
+          <div className="flex items-center gap-1.5 px-3 py-2.5 border-b border-white/5">
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="w-2.5 h-2.5 rounded-full bg-white/15" />
+            <span className="ml-3 text-[10px] font-mono text-white/30 tabular-nums">
+              gashousegym.gymvision.co / admin
+            </span>
+          </div>
+          <Image
+            src="/screenshots/admin-my-day.png"
+            alt="GymVision admin My Day — the operator's action inbox"
+            width={2880}
+            height={1800}
+            className="rounded-b-xl w-full h-auto"
+            priority
+          />
+        </div>
+        {/* Caption */}
+        <p className="text-center text-xs font-mono text-white/40 mt-4 tracking-wider">
+          Admin · My Day — the operator&apos;s action inbox. Real platform, real gym.
+        </p>
       </div>
     </section>
   );

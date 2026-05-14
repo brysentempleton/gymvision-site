@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { NavBar } from "@/components/nav";
 import { Footer } from "@/components/footer";
 
@@ -28,37 +29,86 @@ export default function FeaturesPage() {
           </p>
         </section>
 
-        {/* Module grid */}
+        {/* Featured modules — alternating image/text */}
         <section className="mx-auto max-w-6xl px-6 mb-24">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {MODULES.map((m, i) => (
+          <div className="space-y-20 md:space-y-32">
+            {FEATURED.map((m, i) => (
               <div
                 key={m.title}
-                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-white/20 transition-colors"
+                className={`grid md:grid-cols-2 gap-10 md:gap-14 items-center ${
+                  i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
+                }`}
+              >
+                {/* Screenshot */}
+                <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-1.5 shadow-2xl shadow-black/30 overflow-hidden">
+                  <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/5">
+                    <span className="w-2 h-2 rounded-full bg-white/15" />
+                    <span className="w-2 h-2 rounded-full bg-white/15" />
+                    <span className="w-2 h-2 rounded-full bg-white/15" />
+                    <span className="ml-2 text-[9px] font-mono text-white/30">
+                      {m.urlHint}
+                    </span>
+                  </div>
+                  <Image
+                    src={m.screenshot}
+                    alt={`${m.title} — GymVision feature`}
+                    width={2880}
+                    height={1800}
+                    className="rounded-b-xl w-full h-auto"
+                  />
+                </div>
+                {/* Copy */}
+                <div>
+                  <div className="text-xs font-semibold tracking-[0.18em] uppercase text-[#e63329] mb-3">
+                    Module {String(m.number).padStart(2, "0")}
+                  </div>
+                  <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">
+                    {m.title}
+                  </h2>
+                  <p className="text-base text-white/70 leading-relaxed mb-5">
+                    {m.body}
+                  </p>
+                  <ul className="space-y-2">
+                    {m.bullets.map((b) => (
+                      <li
+                        key={b}
+                        className="text-sm text-white/60 flex items-start gap-3"
+                      >
+                        <span className="text-[#e63329] mt-1">·</span>
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Also included — compact grid */}
+        <section className="mx-auto max-w-5xl px-6 mb-24">
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-3 text-center">
+            Also included
+          </h2>
+          <p className="text-base text-white/50 text-center mb-10">
+            Six more modules — same bill, no add-on pricing, no upsell at checkout.
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {ALSO_INCLUDED.map((m) => (
+              <div
+                key={m.title}
+                className="rounded-xl border border-white/10 bg-white/[0.02] p-5 hover:border-white/20 transition-colors"
               >
                 <div className="flex items-baseline justify-between mb-3">
                   <span className="text-xs font-mono text-white/30 tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
+                    {String(m.number).padStart(2, "0")}
                   </span>
-                  {m.included && (
-                    <span className="text-[10px] font-semibold tracking-widest uppercase text-[#e63329] bg-[#e63329]/10 border border-[#e63329]/30 rounded-full px-2 py-0.5">
-                      Included
-                    </span>
-                  )}
+                  <span className="text-[9px] font-semibold tracking-widest uppercase text-[#e63329] bg-[#e63329]/10 border border-[#e63329]/30 rounded-full px-2 py-0.5">
+                    Included
+                  </span>
                 </div>
-                <h3 className="text-lg font-bold mb-2">{m.title}</h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-4">{m.body}</p>
-                <ul className="space-y-1.5">
-                  {m.bullets.map((b) => (
-                    <li
-                      key={b}
-                      className="text-xs text-white/50 flex items-start gap-2"
-                    >
-                      <span className="text-[#e63329] mt-0.5">·</span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-base font-bold mb-2">{m.title}</h3>
+                <p className="text-xs text-white/55 leading-relaxed">{m.body}</p>
               </div>
             ))}
           </div>
@@ -70,7 +120,7 @@ export default function FeaturesPage() {
             Everything above. One $499 bill.
           </h2>
           <p className="text-base text-white/60 mb-8">
-            Add-on pricing is dead. Either you ship a complete operating system or you don't.
+            Add-on pricing is dead. Either you ship a complete operating system or you don&apos;t.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
@@ -93,71 +143,110 @@ export default function FeaturesPage() {
   );
 }
 
-const MODULES = [
+const FEATURED = [
   {
+    number: 1,
+    title: "Operator inbox, not dashboard",
+    urlHint: "yourgym.gymvision.co / admin",
+    screenshot: "/screenshots/admin-my-day.png",
+    body: "Members log into a portal. Operators log into an inbox. /admin opens to your action queue: failed payments to retry, leads to call, members through this week, classes today. No charts that don&apos;t change anything.",
+    bullets: [
+      "Time-aware greeting (morning / afternoon / evening)",
+      "4-pill ambient strip — only things that need action",
+      "Lead inbox grouped by recency, one-tap actions",
+    ],
+  },
+  {
+    number: 2,
+    title: "Class scheduling that respects your week",
+    urlHint: "yourgym.gymvision.co / admin / schedule",
+    screenshot: "/screenshots/admin-schedule.png",
+    body: "Calendar view for visual editing, List view for bulk operations (cancel-week, sub-coach). Recurring templates handle the patterns. Each cell shows time + name + booked / capacity at a glance.",
+    bullets: [
+      "Today highlighted in your gym's accent",
+      "Drag-drop visual editing (coming Q2)",
+      "Bulk cancel-week + sub-coach from List tab",
+    ],
+  },
+  {
+    number: 3,
+    title: "Front desk built for the counter",
+    urlHint: "yourgym.gymvision.co / desk",
+    screenshot: "/screenshots/desk-home.png",
+    body: "Two-pane home: photo-grid check-in left, action inbox right. Multi-modal check-in (search, phone, QR, photo tap). Walk-in lead capture in 30 seconds. Counter payments via Stripe, cash, or saved-card retry. Refunds intentionally gated to manager+.",
+    bullets: [
+      "Photo-grid recognition for expected attendees",
+      "3-step walk-in capture (lead → trial → waiver)",
+      "Counter payment safety — refunds locked to manager+",
+    ],
+  },
+  {
+    number: 4,
+    title: "Billing without the platform tax",
+    urlHint: "yourgym.gymvision.co / admin / billing",
+    screenshot: "/screenshots/admin-billing.png",
+    body: "Today queue = right-now operations: failed payments, refunds, manual invoices. Stripe Connect pays you direct — we never touch the money. Zero markup on top of Stripe&apos;s standard rates.",
+    bullets: [
+      "Failed-payment queue with one-tap retry",
+      "Manual invoice composer + audit trail",
+      "Disputes feed (Stripe webhook auto-routes)",
+    ],
+  },
+  {
+    number: 5,
+    title: "Two-way SMS that doesn't feel like a robot",
+    urlHint: "yourgym.gymvision.co / admin / comms",
+    screenshot: "/screenshots/admin-comms.png",
+    body: "Inbound texts thread per-member, reply inline. Outbound broadcasts compose with AI-draft assist + audience picker. Templates save the patterns you reuse (trial welcome, missed-class, payment reminder).",
+    bullets: [
+      "Threaded SMS, not blast-only",
+      "AI-drafted broadcast composer",
+      "Saved templates with AI prompt presets",
+    ],
+  },
+  {
+    number: 6,
+    title: "Member portal — yours, not someone else's brand",
+    urlHint: "yourgym.gymvision.co / portal",
+    screenshot: "/screenshots/portal-home.png",
+    body: "Members install your gym as an app (PWA, no App Store). Book classes, log workouts, message coaches, manage billing, see family accounts. Members get YOUR brand — not PushPress&apos;s, not Mindbody&apos;s.",
+    bullets: [
+      "Add-to-home-screen on iOS + Android",
+      "Offline check-in (syncs when reconnected)",
+      "Push notifications for class + payment reminders",
+    ],
+  },
+];
+
+const ALSO_INCLUDED = [
+  {
+    number: 7,
     title: "AI receptionist",
-    body: "A Vapi-powered phone agent that answers your gym line. Books trials, answers pricing questions, takes messages. Sounds human. Never sleeps.",
-    bullets: ["24/7 phone coverage", "Books from your real schedule", "Trained on your gym's policies"],
-    included: true,
+    body: "Vapi-powered phone agent answers your gym line. Books trials, answers pricing, takes messages. 24/7. Sounds human.",
   },
   {
-    title: "Member portal (PWA)",
-    body: "Members install your gym as an app. Book classes, see workouts, log results, message coaches, manage billing. Yours, not someone else's brand.",
-    bullets: ["Offline-capable", "Push notifications", "Add-to-home-screen"],
-    included: true,
-  },
-  {
-    title: "Class scheduling + booking",
-    body: "Recurring class templates, waitlists, capacity rules, drop-in pricing. Public booking page that respects your brand.",
-    bullets: ["Recurring patterns", "Waitlist auto-promote", "Per-class pricing"],
-    included: true,
-  },
-  {
-    title: "Stripe Connect billing",
-    body: "Payments go from member to your Stripe account. We never touch the money. Zero markup on top of Stripe's standard rates.",
-    bullets: ["Stripe at-cost (0% markup)", "Failed-pay auto-retry", "Manual invoices"],
-    included: true,
-  },
-  {
-    title: "Two-way SMS + broadcasts",
-    body: "Twilio under the hood. Members reply to your texts and the thread lands in your inbox. Broadcast composer with AI draft + audience picker.",
-    bullets: ["Threaded conversations", "AI-drafted broadcasts", "A2P 10DLC compliant"],
-    included: true,
-  },
-  {
-    title: "Front desk + counter payments",
-    body: "Multi-modal check-in (search, QR, photo grid). Walk-in lead capture in 30 seconds. Drop-in charge via Stripe, cash collection, saved-card retry.",
-    bullets: ["Photo-grid check-in", "3-step walk-in capture", "Counter payment flows"],
-    included: true,
-  },
-  {
+    number: 8,
     title: "Drip automations",
-    body: "Trigger sequences on real events: new lead, missed class, payment failed, 100th check-in. Editor that doesn't require a workshop to learn.",
-    bullets: ["Event-triggered", "Multi-channel (SMS + email)", "Drip + one-off"],
-    included: true,
+    body: "Trigger sequences on real events: new lead, missed class, payment failed. SMS + email channels. Editor that doesn&apos;t require a workshop.",
   },
   {
+    number: 9,
     title: "Cmd+K AI assistant",
-    body: "Power-user keyboard surface. Type \"refund Brady $50\" or \"freeze Sam 2 weeks\" and a confirm modal opens with the values pre-filled.",
-    bullets: ["Verb-shaped commands", "Natural-language fallback", "Audit-logged"],
-    included: true,
+    body: "Type “refund Brady $50” or “freeze Sam 2 weeks” — confirm modal opens with values pre-filled. Power-user keyboard surface.",
   },
   {
-    title: "Reporting + churn intelligence",
-    body: "MRR, retention curves, cohort analysis, plan transitions. Churn-risk scoring that surfaces at-risk members weeks before they cancel.",
-    bullets: ["At-risk member feed", "Cohort retention curves", "Real-time MRR"],
-    included: true,
-  },
-  {
+    number: 10,
     title: "Public website + onboarding",
-    body: "Templated marketing site for every gym — schedule embed, plan grid, coaches, free-trial capture. Live on your domain in minutes.",
-    bullets: ["Custom domain", "Template editor", "SEO + OG ready"],
-    included: true,
+    body: "Templated marketing site per gym — schedule embed, plan grid, coaches, free-trial capture. Live on your custom domain.",
   },
   {
+    number: 11,
     title: "1-click data export",
-    body: "Every member, payment, check-in, and waiver. CSV bundle in seconds. No \"migration fee.\" No support ticket. The exit ramp is built in.",
-    bullets: ["Complete export", "No friction", "Anytime, any reason"],
-    included: true,
+    body: "Members, payments, check-ins, waivers. Complete CSV bundle in seconds. No “migration fee.” The exit ramp is built in.",
+  },
+  {
+    number: 12,
+    title: "Churn intelligence",
+    body: "AI-scored at-risk members surface weeks before they cancel. Habits, check-in patterns, class affinity, payment behavior — all factored.",
   },
 ];
