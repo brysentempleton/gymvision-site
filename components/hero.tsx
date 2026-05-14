@@ -55,7 +55,7 @@ export function HeroSection() {
 
       {/* Product preview — video walkthrough with screenshot as poster (LCP-friendly) */}
       <div className="relative z-10 mx-auto max-w-6xl px-6">
-        <div className="relative rounded-2xl border border-white/10 bg-white/[0.02] p-2 shadow-2xl shadow-red-900/10">
+        <div className="relative rounded-2xl border border-white/10 bg-black/40 p-2 shadow-2xl shadow-red-900/10">
           <video
             src="/video/gymvision-walkthrough.mp4"
             poster="/screenshots/admin-my-day.png"
@@ -64,7 +64,9 @@ export function HeroSection() {
             loop
             playsInline
             controls
-            className="rounded-xl w-full h-auto block"
+            preload="metadata"
+            className="rounded-xl w-full block bg-black"
+            style={{ aspectRatio: "16 / 9", objectFit: "cover" }}
             aria-label="GymVision product walkthrough — 60 second tour of admin, desk, billing, comms, and member portal"
           />
         </div>
