@@ -8,21 +8,26 @@ export function WaitlistSection() {
   const [size, setSize] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email.trim()) return;
     setSubmitting(true);
+    setFailed(false);
     try {
-      await fetch("/api/waitlist", {
+      const res = await fetch("/api/waitlist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, gym, size }),
       });
+      if (!res.ok) {
+        setFailed(true);
+        return;
+      }
       setSubmitted(true);
     } catch {
-      // Still mark as submitted — we don't want UX failures blocking leads
-      setSubmitted(true);
+      setFailed(true);
     } finally {
       setSubmitting(false);
     }
@@ -79,8 +84,17 @@ export function WaitlistSection() {
               disabled={submitting || !email.trim()}
               className="w-full h-12 rounded-xl bg-[#e63329] text-white font-semibold text-base hover:bg-[#c9291f] transition-colors disabled:opacity-50"
             >
-              {submitting ? "Sending…" : "Join the waitlist"}
+              {submitting ? "Sending…" : failed ? "Try again" : "Join the waitlist"}
             </button>
+            {failed && (
+              <p className="text-sm text-red-400/90">
+                That didn&apos;t go through. Try again, or email{" "}
+                <a href="mailto:brybuscas@gmail.com?subject=GymVision%20waitlist" className="underline underline-offset-2">
+                  brybuscas@gmail.com
+                </a>{" "}
+                directly and we&apos;ll get you on the list.
+              </p>
+            )}
           </form>
         )}
 

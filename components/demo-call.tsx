@@ -44,7 +44,11 @@ export function DemoCallWidget() {
           return;
         }
         if (!res.ok) {
-          setState({ kind: "error", message: json.error ?? "Something went wrong" });
+          const message =
+            json.error === "demo_unavailable"
+              ? "The demo line is down right now. Email brybuscas@gmail.com and we'll call you personally."
+              : json.error ?? "Something went wrong";
+          setState({ kind: "error", message });
           return;
         }
         setState({ kind: "called", demoMode: !!json.demo_mode });
@@ -162,7 +166,7 @@ function RateLimitedState({ nextAvailableAt }: { nextAvailableAt: string }) {
       <h3 className="text-xl font-bold mb-2">One demo per day per number</h3>
       <p className="text-sm text-white/60 leading-relaxed">
         We already called this number recently. Try again {nextAvailableAt}, or
-        email <a href="mailto:hello@gymvision.co" className="text-[#e63329] hover:underline">hello@gymvision.co</a>{" "}
+        email <a href="mailto:brybuscas@gmail.com" className="text-[#e63329] hover:underline">brybuscas@gmail.com</a>{" "}
         to schedule a live demo with Brysen.
       </p>
     </div>

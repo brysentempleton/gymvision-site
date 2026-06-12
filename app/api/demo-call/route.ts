@@ -66,34 +66,47 @@ async function placeVapiCall(args: {
   return res.json();
 }
 
+// Returns true only if the notification email was accepted by Resend. The
+// caller uses this to avoid telling the visitor "we'll reach out" when
+// nobody was actually notified.
 async function emailBrysenFallback(args: {
   toPhone: string;
   gymName: string;
-}) {
+}): Promise<boolean> {
   const resendKey = process.env.RESEND_API_KEY;
   const to = process.env.DEMO_NOTIFY_TO ?? "brybuscas@gmail.com";
   if (!resendKey) {
-    console.warn("[demo-call] No RESEND_API_KEY — request not emailed");
-    return;
+    console.error("[demo-call] No RESEND_API_KEY, request not emailed");
+    return false;
   }
-  await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${resendKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: "GymVision <onboarding@resend.dev>",
-      to: [to],
-      subject: `[GymVision demo request] ${args.gymName || "Anonymous"}`,
-      text: `New AI demo request from getgymvision.com:
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "GymVision <onboarding@resend.dev>",
+        to: [to],
+        subject: `[GymVision demo request] ${args.gymName || "Anonymous"}`,
+        text: `New AI demo request from gymvision.app:
 
 Phone: ${args.toPhone}
 Gym name: ${args.gymName || "(not provided)"}
 
-(Live Vapi demo isn't configured yet — reach out manually.)`,
-    }),
-  }).catch((err) => console.error("[demo-call] Resend failed:", err));
+(Live Vapi call didn't go out, reach out manually.)`,
+      }),
+    });
+    if (!res.ok) {
+      console.error(`[demo-call] Resend error ${res.status}:`, await res.text());
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("[demo-call] Resend failed:", err);
+    return false;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -133,8 +146,13 @@ export async function POST(request: NextRequest) {
   const liveDemoConfigured = !!(apiKey && assistantId && phoneNumberId);
 
   if (!liveDemoConfigured) {
-    // Demo-mode fallback: email Brysen, return friendly response
-    await emailBrysenFallback({ toPhone, gymName });
+    // Demo-mode fallback: email Brysen, return friendly response. If the
+    // email also fails there is no notification channel at all, so be honest
+    // instead of dead-ending the lead with a fake success.
+    const notified = await emailBrysenFallback({ toPhone, gymName });
+    if (!notified) {
+      return NextResponse.json({ error: "demo_unavailable" }, { status: 502 });
+    }
     recentCalls.set(toPhone, Date.now());
     return NextResponse.json({ ok: true, demo_mode: true });
   }
@@ -152,8 +170,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, demo_mode: false, call_id: call.id });
   } catch (err) {
     console.error("[demo-call] Vapi error:", err);
-    // Fall back to demo mode rather than showing the user a Vapi error
-    await emailBrysenFallback({ toPhone, gymName });
+    // Fall back to demo mode rather than showing the user a Vapi error,
+    // but only claim success if the fallback notification actually went out.
+    const notified = await emailBrysenFallback({ toPhone, gymName });
+    if (!notified) {
+      return NextResponse.json({ error: "demo_unavailable" }, { status: 502 });
+    }
     recentCalls.set(toPhone, Date.now());
     return NextResponse.json({ ok: true, demo_mode: true });
   }
