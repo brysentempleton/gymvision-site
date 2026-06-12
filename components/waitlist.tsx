@@ -99,7 +99,8 @@ export function WaitlistSection() {
         )}
 
         <p className="mt-6 text-xs text-white/30">
-          No spam. No sales cadence. We&apos;ll reach out personally to schedule a 20-minute call.
+          No spam. No sales cadence. We&apos;ll reach out personally to schedule a 20-minute call.{" "}
+          <a href="/privacy" className="underline underline-offset-2 hover:text-white/60 transition-colors">Privacy</a>
         </p>
       </div>
     </section>

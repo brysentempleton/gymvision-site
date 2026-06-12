@@ -125,6 +125,10 @@ export function DemoCallWidget() {
               )}
               <p className="text-xs text-white/40 mt-4">
                 We&apos;ll only use your number for the demo call. One call per number per day.
+                By requesting a call you agree to receive one automated demo call at this number.{" "}
+                <a href="/privacy" className="underline underline-offset-2 hover:text-white/70 transition-colors">Privacy</a>
+                {" · "}
+                <a href="/terms" className="underline underline-offset-2 hover:text-white/70 transition-colors">Terms</a>
               </p>
             </form>
           )}

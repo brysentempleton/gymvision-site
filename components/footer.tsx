@@ -13,6 +13,7 @@ const SECTIONS = [
     label: "Proof",
     links: [
       { href: "/case-study/gas-house", label: "Gas House case study" },
+      { href: "/vs/pushpress", label: "vs PushPress" },
       { href: "/changelog", label: "Changelog" },
     ],
   },
@@ -21,6 +22,8 @@ const SECTIONS = [
     links: [
       { href: "/founder", label: "Founder" },
       { href: "/#waitlist", label: "Get early access" },
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
     ],
   },
 ];
