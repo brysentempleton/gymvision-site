@@ -90,7 +90,7 @@ async function emailBrysenFallback(args: {
         from: "GymVision <onboarding@resend.dev>",
         to: [to],
         subject: `[GymVision demo request] ${args.gymName || "Anonymous"}`,
-        text: `New AI demo request from gymvision.app:
+        text: `New AI demo request from the GymVision site:
 
 Phone: ${args.toPhone}
 Gym name: ${args.gymName || "(not provided)"}

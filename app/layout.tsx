@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gymvision.app"),
+  metadataBase: new URL("https://gymvision-site.vercel.app"),
   title: "GymVision — The gym OS that thinks ahead",
   description: "AI-native gym management. Stripe at-cost. One-afternoon migration from any platform. Built for gyms that refuse to settle.",
   openGraph: {

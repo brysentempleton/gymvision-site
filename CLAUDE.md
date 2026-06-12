@@ -1,6 +1,6 @@
 # GymVision Site
 
-Marketing + changelog site for GymVision SaaS. Next.js 16 + Tailwind + shadcn. Vercel auto-deploys from main. Domain: `gymvision.app`.
+Marketing + changelog site for GymVision SaaS. Next.js 16 + Tailwind + shadcn. Vercel auto-deploys from main. Live URL: `https://gymvision-site.vercel.app` (production alias). **No custom domain yet: `gymvision.app` is NOT ours** (it serves a third-party "AI Workout Planner" product); `gymvision.co` / `getgymvision.com` ownership unverified. When a real domain is bought and attached, update metadataBase (`app/layout.tsx`), `app/sitemap.ts`, `app/robots.ts`, and the vs-PushPress canonical.
 
 **Full ship sequence, pre-flight gates, changelog pipeline detail:**
 `~/.openclaw/workspace/05-system/runbooks/gymvision-site-runbook-2026-05-25.md`

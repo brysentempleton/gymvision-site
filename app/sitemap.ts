@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://gymvision.app";
+const BASE = "https://gymvision-site.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
