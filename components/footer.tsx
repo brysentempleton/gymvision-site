@@ -66,10 +66,10 @@ export function Footer() {
         <div className="pt-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/40">
           <p>Not VC-funded. No board. No churn-tax pressure.</p>
           <a
-            href="mailto:hello@gymvision.co"
+            href="mailto:brybuscas@gmail.com"
             className="font-mono hover:text-white transition-colors"
           >
-            hello@gymvision.co
+            brybuscas@gmail.com
           </a>
         </div>
       </div>
