@@ -44,7 +44,7 @@ export default function OpenGraphImage() {
           </div>
         </div>
         <div style={{ display: "flex", fontSize: 26, color: "rgba(255,255,255,0.4)" }}>
-          Private beta · Built by operators, for operators
+          getgymvision.com
         </div>
       </div>
     ),

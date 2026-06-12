@@ -12,7 +12,7 @@ const SECTIONS = [
   {
     title: "What this covers",
     body: [
-      "These terms cover the GymVision website, the early-access waitlist, and the AI receptionist demo call. The GymVision platform itself is in private beta; pilot gyms get a separate agreement that covers the actual service.",
+      "These terms cover the GymVision website (getgymvision.com), the early-access waitlist, and the AI receptionist demo call. The GymVision platform itself is in private beta; pilot gyms get a separate agreement that covers the actual service.",
     ],
   },
   {

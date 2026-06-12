@@ -147,7 +147,7 @@ const FEATURED = [
   {
     number: 1,
     title: "Operator inbox, not dashboard",
-    urlHint: "gymvision / yourgym / admin",
+    urlHint: "yourgym.getgymvision.com / admin",
     screenshot: "/screenshots/admin-my-day.png",
     body: "Members log into a portal. Operators log into an inbox. /admin opens to your action queue: failed payments to retry, leads to call, members through this week, classes today. No charts that don&apos;t change anything.",
     bullets: [
@@ -159,7 +159,7 @@ const FEATURED = [
   {
     number: 2,
     title: "Class scheduling that respects your week",
-    urlHint: "gymvision / yourgym / admin / schedule",
+    urlHint: "yourgym.getgymvision.com / admin / schedule",
     screenshot: "/screenshots/admin-schedule.png",
     body: "Calendar view for visual editing, List view for bulk operations (cancel-week, sub-coach). Recurring templates handle the patterns. Each cell shows time + name + booked / capacity at a glance.",
     bullets: [
@@ -171,7 +171,7 @@ const FEATURED = [
   {
     number: 3,
     title: "Front desk built for the counter",
-    urlHint: "gymvision / yourgym / desk",
+    urlHint: "yourgym.getgymvision.com / desk",
     screenshot: "/screenshots/desk-home.png",
     body: "Two-pane home: photo-grid check-in left, action inbox right. Multi-modal check-in (search, phone, QR, photo tap). Walk-in lead capture in 30 seconds. Counter payments via Stripe, cash, or saved-card retry. Refunds intentionally gated to manager+.",
     bullets: [
@@ -183,7 +183,7 @@ const FEATURED = [
   {
     number: 4,
     title: "Billing without the platform tax",
-    urlHint: "gymvision / yourgym / admin / billing",
+    urlHint: "yourgym.getgymvision.com / admin / billing",
     screenshot: "/screenshots/admin-billing.png",
     body: "Today queue = right-now operations: failed payments, refunds, manual invoices. Stripe Connect pays you direct — we never touch the money. Zero markup on top of Stripe&apos;s standard rates.",
     bullets: [
@@ -195,7 +195,7 @@ const FEATURED = [
   {
     number: 5,
     title: "Two-way SMS that doesn't feel like a robot",
-    urlHint: "gymvision / yourgym / admin / comms",
+    urlHint: "yourgym.getgymvision.com / admin / comms",
     screenshot: "/screenshots/admin-comms.png",
     body: "Inbound texts thread per-member, reply inline. Outbound broadcasts compose with AI-draft assist + audience picker. Templates save the patterns you reuse (trial welcome, missed-class, payment reminder).",
     bullets: [
@@ -207,7 +207,7 @@ const FEATURED = [
   {
     number: 6,
     title: "Member portal — yours, not someone else's brand",
-    urlHint: "gymvision / yourgym / portal",
+    urlHint: "yourgym.getgymvision.com / portal",
     screenshot: "/screenshots/portal-home.png",
     body: "Members install your gym as an app (PWA, no App Store). Book classes, log workouts, message coaches, manage billing, see family accounts. Members get YOUR brand — not PushPress&apos;s, not Mindbody&apos;s.",
     bullets: [
