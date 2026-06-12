@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero";
 import { WedgeSection } from "@/components/wedge";
 import { DemoCallWidget } from "@/components/demo-call";
 import { PricingSection } from "@/components/pricing";
+import { CaseStudySection } from "@/components/case-study";
 import { MigrationSection } from "@/components/migration";
 import { WaitlistSection } from "@/components/waitlist";
 import { NavBar } from "@/components/nav";
@@ -16,6 +17,7 @@ export default function HomePage() {
         <WedgeSection />
         <DemoCallWidget />
         <PricingSection />
+        <CaseStudySection />
         <MigrationSection />
         <WaitlistSection />
       </main>
