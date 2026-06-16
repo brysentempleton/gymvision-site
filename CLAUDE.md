@@ -27,4 +27,16 @@ pnpm tsc --noEmit  # types must pass
 
 1. **No Gas House Gym theming as site chrome.** This is the GymVision marketing site, NOT a tenant: never import Gas House brand tokens, logos, or colors into the layout/nav/global styles. Gas House *mentions* are expected and correct: it is the flagship case study (`/case-study/gas-house`, homepage CaseStudySection, founder story). Gate on theming, not on the string. (Rule narrowed 2026-06-11; the old "grep must be empty" check is impossible now that the case study exists.)
 2. **Vercel deployment-protection must be OFF** before any client share.
-3. **Brand isolation:** GymVision's own brand. Do NOT import Koios/KV spatial-glass tokens — use `app/globals.css`.
+3. **Brand isolation:** GymVision's own brand. Do NOT import Koios/KV spatial-glass tokens, use `app/globals.css`.
+
+---
+
+## Verify
+
+Autonomous-handoff gate (protocol: vault `05-system/claude-code/AUTONOMOUS-HANDOFF.md`). "Done" requires this green, output pasted:
+
+```bash
+pnpm tsc && pnpm build && pnpm test:e2e
+```
+
+Never push or deploy autonomously. Stop and report.
